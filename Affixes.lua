@@ -58,13 +58,14 @@ local FORTIFIED = 10
 local ENTANGLING = 134
 local AFFLICTED = 135
 local INCORPOREAL = 136
+
 local XALATATHS_BARGAIN_ASCENDANT = 148
-local XALATATHS_GUILE = 147
-local CHALLENGERS_PERIL = 152
 local XALATATHS_BARGAIN_VOIDBOUND = 158
 local XALATATHS_BARGAIN_OBLIVION = 159
 local XALATATHS_BARGAIN_DEVOUR = 160
 local XALATATHS_BARGAIN_PULSAR = 162
+local XALATATHS_GUILE = 147
+local CHALLENGERS_PERIL = 152
 
 local AFFIX_ROTATION = {
 	{ XALATATHS_BARGAIN_ASCENDANT, TYRANNICAL, FORTIFIED, XALATATHS_GUILE },
@@ -89,8 +90,11 @@ local LEGION_AFFIX_ROTATION = {
 
 local AFFIX_INFO = {}
 local ROTATION_WEEK_POSITION = 0
+
 local AffixIDs = {}
-local AffixOneID, AffixTwoID, AffixThreeID, AffixSeasonID = 0, 0, 0, 0 -- Used to always show the current week's affixes irregardless if the rotation is known or not
+
+-- Used to always show the current week's affixes irregardless if the rotation is known or not
+local AffixOneID, AffixTwoID, AffixThreeID, AffixSeasonID = 0, 0, 0, 0
 
 -- Finds the index of the current week's affixes in the table
 -- @param affixIds Array of integers for the corresponding affix
