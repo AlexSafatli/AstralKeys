@@ -138,20 +138,19 @@ do
   local function close(self)
     self:GetParent():Hide()
   end
-  function templates:AstralOptionsFrame(parent, logoPath)
+  function templates:AstralHorizontalOptionsFrame(parent, logoPath)
     local self = CreateFrame('FRAME', nil, parent, BackdropTemplateMixin and 'BackdropTemplate')
 
-    self:SetSize(1000, 650)
+    self:SetSize(650, 455)
     self:SetFrameStrata('HIGH')
     self:SetToplevel(true)
     self:EnableMouse(true)
     self:SetPoint('CENTER')
 
-    self.Width = 1000
-    self.Height = 650
-    self.ListWidth = 165
-    self.MenuBarWidth = 50
-    self.ContentWidth = self.Width - self.ListWidth - self.MenuBarWidth
+    self.Width = 650
+    self.Height = 455
+    self.TitleBarHeight = 50
+    self.ContentHeight = self.Height - self.TitleBarHeight
 
     self.HeaderText = self:CreateFontString(nil, 'ARTWORK', 'InterUIBold_Normal_ART')
     self.HeaderText:SetPoint('TOP', 0, -14)
@@ -161,24 +160,24 @@ do
     self.background:SetAllPoints(self)
     self.background:SetColorTexture(0, 0, 0, 0.8)
 
-    local menuBar = CreateFrame('FRAME', nil, self)
-    menuBar:SetWidth(self.MenuBarWidth)
-    menuBar:SetHeight(self.Height)
-    menuBar:SetPoint('TOPLEFT', self, 'TOPLEFT')
-    menuBar.texture = menuBar:CreateTexture(nil, 'BACKGROUND')
-    menuBar.texture:SetAllPoints(menuBar)
-    menuBar.texture:SetColorTexture(33/255, 33/255, 33/255, 0.9)
-    self.MenuBar = menuBar
-
-    local icon = menuBar:CreateTexture(nil, 'ARTWORK')
+    local titleBar = CreateFrame('FRAME', nil, self)
+    titleBar:SetWidth(self.Width)
+    titleBar:SetHeight(self.TitleBarHeight)
+    titleBar:SetPoint('TOPLEFT', self, 'TOPLEFT')
+    titleBar.texture = titleBar:CreateTexture(nil, 'BACKGROUND')
+    titleBar.texture:SetAllPoints(titleBar)
+    titleBar.texture:SetColorTexture(33/255, 33/255, 33/255, 0.9)
+    self.titleBar = titleBar
+    
+    local icon = titleBar:CreateTexture(nil, 'ARTWORK')
     icon:SetAlpha(0.8)
     icon:SetSize(24, 24)
-    icon:SetPoint('TOPLEFT', menuBar, 'TOPLEFT', 13, -10)
-    menuBar.Icon = icon
+    icon:SetPoint('TOPLEFT', titleBar, 'TOPLEFT', 13, -10)
+    titleBar.Icon = icon
 
-    local logo = CreateFrame('BUTTON', nil, menuBar)
+    local logo = CreateFrame('BUTTON', nil, titleBar)
     logo:SetSize(32, 32)
-    logo:SetPoint('BOTTOMLEFT', menuBar, 'BOTTOMLEFT', 10, 10)
+    logo:SetPoint('BOTTOMLEFT', titleBar, 'BOTTOMLEFT', 10, 10)
     logo:SetAlpha(0.8)
     logo:SetNormalTexture(logoPath or ('Interface\\AddOns\\' .. ADDON_NAME .. '\\Media\\logo.png'))
     logo:SetScript('OnClick', function()
